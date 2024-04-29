@@ -1,0 +1,6 @@
+# Add project-specific packages for Buildroot here
+#
+# If these are non-proprietary, please consider contributing them back to
+# Nerves or Buildroot.
+source "$NERVES_DEFCONFIG_DIR/packages/google-libflutter/Config.in"
+source "$NERVES_DEFCONFIG_DIR/packages/smrt-flutter-pi/Config.in"

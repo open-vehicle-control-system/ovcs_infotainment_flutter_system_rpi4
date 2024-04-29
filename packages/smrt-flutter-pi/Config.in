@@ -1,0 +1,34 @@
+config BR2_PACKAGE_SMRT_FLUTTER_PI_ARCH_SUPPORTS
+	bool
+	default y if BR2_arm || BR2_aarch64
+
+comment "smrt-flutter-pi needs an ARM architecture and a toolchain w/ dynamic library, threads"
+	depends on BR2_USE_MMU # fork()
+	depends on BR2_PACKAGE_FLUTTER_PI_ARCH_SUPPORTS
+	depends on !BR2_PACKAGE_HAS_LIBEGL
+	depends on BR2_STATIC_LIBS || !BR2_TOOLCHAIN_HAS_THREADS
+
+config BR2_PACKAGE_SMRT_FLUTTER_PI
+	bool "smrt-flutter-pi"
+	depends on BR2_USE_MMU # fork()
+	depends on !BR2_STATIC_LIBS
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	depends on BR2_PACKAGE_SMRT_FLUTTER_PI_ARCH_SUPPORTS
+	select BR2_PACKAGE_LIBINPUT
+	select BR2_PACKAGE_LIBXKBCOMMON
+	select BR2_PACKAGE_XKEYBOARD_CONFIG
+	select BR2_PACKAGE_LIBUEV
+	select BR2_PACKAGE_LIBGLVND
+	help
+	  A light-weight Flutter Engine Embedded for Raspberry Pi that runs without X.
+
+	  https://github.com/ardera/flutter-pi
+
+if BR2_PACKAGE_SMRT_FLUTTER_PI
+
+config BR2_PACKAGE_SMRT_FLUTTER_PI_ENABLE_DEBUG
+	bool "flutter-pi-debug"
+	default n
+	help
+	  Enable debug build of Flutter Pi
+endif

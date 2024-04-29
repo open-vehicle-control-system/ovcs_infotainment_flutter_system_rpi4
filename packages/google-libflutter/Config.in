@@ -1,0 +1,33 @@
+config BR2_PACKAGE_GOOGLE_LIBFLUTTER
+	bool
+
+comment "google-libflutter needs an ARM/ARM64 architecture and a toolchain w/ dynamic library, threads"
+	depends on BR2_USE_MMU # fork()
+	depends on BR2_PACKAGE_GOOGLE_LIBFLUTTER
+	depends on !BR2_PACKAGE_HAS_LIBEGL
+	depends on BR2_STATIC_LIBS || !BR2_TOOLCHAIN_HAS_THREADS
+
+config BR2_PACKAGE_GOOGLE_LIBFLUTTER
+	bool "google-libflutter"
+	depends on BR2_USE_MMU # fork()
+	depends on !BR2_STATIC_LIBS
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	depends on BR2_PACKAGE_HAS_LIBEGL
+	select BR2_PACKAGE_FREETYPE
+	select BR2_PACKAGE_LIBINPUT
+	select BR2_PACKAGE_LIBXKBCOMMON
+	select BR2_PACKAGE_XKEYBOARD_CONFIG
+	help
+	  Google's flutter engine (libflutter.so) which is required to run Flutter asset bundles, this breaks a lot of buildroot conventions.
+
+	  https://github.com/flutter/engine
+
+if BR2_PACKAGE_GOOGLE_LIBFLUTTER
+
+config BR2_PACKAGE_GOOGLE_LIBFLUTTER_ENABLE_DEBUG
+	bool "google-libflutter-debug"
+	default n
+	help
+	  Also build a debug version of the library
+
+endif
