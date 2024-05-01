@@ -14,11 +14,11 @@ config BR2_PACKAGE_SMRT_FLUTTER_PI
 	depends on !BR2_STATIC_LIBS
 	depends on BR2_TOOLCHAIN_HAS_THREADS
 	depends on BR2_PACKAGE_SMRT_FLUTTER_PI_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_GOOGLE_LIBFLUTTER
 	select BR2_PACKAGE_LIBINPUT
 	select BR2_PACKAGE_LIBXKBCOMMON
 	select BR2_PACKAGE_XKEYBOARD_CONFIG
 	select BR2_PACKAGE_LIBUEV
-	select BR2_PACKAGE_LIBGLVND
 	help
 	  A light-weight Flutter Engine Embedded for Raspberry Pi that runs without X.
 
