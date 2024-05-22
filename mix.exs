@@ -1,8 +1,8 @@
-defmodule NervesSystemSlutterRpi4.MixProject do
+defmodule OvcsInfotainmentFlutterSystemRpi4.MixProject do
   use Mix.Project
 
-  @github_organization "Spin42"
-  @app :nerves_system_flutter_rpi4
+  @github_organization "ovcs"
+  @app :ovcs_infotainment_flutter_system_rpi4
   @source_url "https://github.com/#{@github_organization}/#{@app}"
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
